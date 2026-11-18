@@ -1,7 +1,6 @@
 package spentenergy
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -13,48 +12,18 @@ const (
 	walkingCaloriesCoefficient = 0.5  // коэффициент для расчета калорий при ходьбе.
 )
 
-func Distance(steps int, height float64) float64 {
-	if steps <= 0 || height <= 0 {
-		return 0
-	}
-	return float64(steps) * height * stepLengthCoefficient / mInKm
-}
-
-func MeanSpeed(steps int, height float64, duration time.Duration) float64 {
-	if steps <= 0 || height <= 0 || duration <= 0 {
-		return 0
-	}
-	return Distance(steps, height) / duration.Hours()
-}
-
-func validateActivity(steps int, weight, height float64, duration time.Duration) error {
-	if steps <= 0 {
-		return fmt.Errorf("количество шагов должно быть положительным: %d", steps)
-	}
-	if weight <= 0 {
-		return fmt.Errorf("вес должен быть положительным: %v", weight)
-	}
-	if height <= 0 {
-		return fmt.Errorf("рост должен быть положительным: %v", height)
-	}
-	if duration <= 0 {
-		return fmt.Errorf("продолжительность должна быть положительной: %v", duration)
-	}
-	return nil
+func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
+	// TODO: реализовать функцию
 }
 
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
-	if err := validateActivity(steps, weight, height, duration); err != nil {
-		return 0, err
-	}
-	calories := weight * MeanSpeed(steps, height, duration) * duration.Minutes() / minInH
-	return calories, nil
+	// TODO: реализовать функцию
 }
 
-func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
-	if err := validateActivity(steps, weight, height, duration); err != nil {
-		return 0, err
-	}
-	calories := weight * MeanSpeed(steps, height, duration) * duration.Minutes() / minInH
-	return calories * walkingCaloriesCoefficient, nil
+func MeanSpeed(steps int, height float64, duration time.Duration) float64 {
+	// TODO: реализовать функцию
+}
+
+func Distance(steps int, height float64) float64 {
+	// TODO: реализовать функцию
 }
